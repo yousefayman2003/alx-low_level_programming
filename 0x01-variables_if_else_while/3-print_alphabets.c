@@ -24,7 +24,7 @@ int main(void)
 	while (ch_cap <= 'Z')
 	{
 		putchar(ch_cap);
-		ch++;
+		ch_cap++;
 	}
 	putchar('\n');
 	return (0);
