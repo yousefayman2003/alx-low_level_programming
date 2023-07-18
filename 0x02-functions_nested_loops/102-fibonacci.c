@@ -14,7 +14,7 @@ int main(void)
 
 	for (count = 0; count < 50; count++)
 	{
-		sum = prev + curr
+		sum = prev + curr;
 		printf("%lu", sum);
 
 		prev = curr;
