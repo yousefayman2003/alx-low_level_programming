@@ -10,14 +10,15 @@
 int main(void)
 {
 	int count;
-	unsigned long prev = 0, curr = 1;
+	unsigned long prev = 0, curr = 1, sum;
 
 	for (count = 0; count < 50; count++)
 	{
-		printf("%lu", prev + curr);
+		sum = prev + curr
+		printf("%lu", sum);
 
 		prev = curr;
-		curr = prev + curr;
+		curr = sum;
 
 		if (count == 49)
 			printf("\n");
