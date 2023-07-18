@@ -26,7 +26,7 @@ int main(void)
 		prev = curr;
 		curr = sum;
 	}
-	prinf("%.0f\n", total_sum);
+	printf("%.0f\n", total_sum);
 
 	return (0);
 }
