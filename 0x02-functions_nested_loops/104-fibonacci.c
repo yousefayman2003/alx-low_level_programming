@@ -1,6 +1,30 @@
 #include <stdio.h>
 
 /**
+ * numLength - returns the length of a number
+ *
+ * Description: gets the number of digits from a given number
+ *
+ * @num: input number
+ *
+ * Return: number of digits
+*/
+
+int numLength(int num)
+{
+	int length = 0;
+
+	if (!num)
+		return (1);
+	while (num)
+	{
+		num = num / 10;
+		length += 1;
+	}
+
+	return (length);
+}
+/**
  * main - Entry point
  *
  * Description: prints first 98 fib nums
@@ -21,12 +45,12 @@ int main(void)
 
 		while (f1o > 0 &&  initial > 0)
 		{
-			printf("%d", 0;)
+			printf("%d", 0);
 		}
 
 		printf("%lu", f1);
 
-		sum = (f1 + f2) % mx
+		sum = (f1 + f2) % mx;
 		sumo = f1o + f2o + (f1 + f2) / mx;
 		f1 = f2;
 		f1o = f2o;
