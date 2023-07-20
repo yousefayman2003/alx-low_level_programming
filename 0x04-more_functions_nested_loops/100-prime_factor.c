@@ -3,7 +3,7 @@
 /**
  * main - prints the highest prime factor of 612852475143
  *
- * Return: 0 if success else fail
+ * Return: 0 if successful
  */
 int main(void)
 {
@@ -15,7 +15,7 @@ int main(void)
 			prime = prime / i;
 		else
 			i += 2;
-i
+
 	printf("%ld\n", prime);
 
 	return (0);

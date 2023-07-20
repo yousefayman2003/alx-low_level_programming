@@ -1,9 +1,8 @@
 #include "main.h"
 /**
  * print_number - prints an integer
- *
- * @n: input number of type int
-*/
+ * @n: tracked var
+ */
 void print_number(int n)
 {
 	unsigned int x = n;
