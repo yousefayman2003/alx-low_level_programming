@@ -24,7 +24,7 @@ int isPrintable(int n)
 void printHexes(char *b, int start, int end)
 {
 	int i = 0;
-	
+
 	while (i < 10)
 	{
 		if (i < end)
@@ -48,14 +48,14 @@ void printHexes(char *b, int start, int end)
 void printASCII(char *b, int start, int end)
 {
 	int ch, i = 0;
-	
+
 	while (i < end)
 	{
 		ch = *(b + i + start);
 		if (!isPrintable(ch))
 			ch = 46;
 		printf("%c", ch);
-		i++:
+		i++;
 	}
 }
 
