@@ -21,7 +21,7 @@ char *rot13(char *s)
 			if (*s == rot13[i])
 			{
 				*s = ROT13[i];
-				break
+				break;
 			}
 
 		}
