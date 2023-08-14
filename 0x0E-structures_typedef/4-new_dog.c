@@ -1,5 +1,5 @@
-#include "dog.h"
 #include <stdlib.h>
+#include "dog.h"
 
 /**
  * _strlen - gets length of a string
@@ -10,11 +10,11 @@
 */
 int _strlen(const char *str)
 {
-	int l = 0;
+	int length = 0;
 
 	while (*str++)
-		l++;
-	return (l);
+		length++;
+	return (length);
 }
 
 /**
@@ -33,6 +33,7 @@ char *_strcopy(char *dest, char *src)
 	for (i = 0; src[i]; i++)
 		dest[i] = src[i];
 	dest[i] = '\0';
+
 	return (dest);
 }
 
@@ -64,7 +65,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(dog);
 		return (NULL);
 	}
-	dog->owner = malloc(sizeof(char) * (_strlen(*owner) + 1));
+	dog->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
 	if ((*dog).owner == NULL)
 	{
 		free(dog->name);
