@@ -6,12 +6,15 @@
 */
 void free_listint(listint_t *head)
 {
-	listint_t *node = malloc(sizeof(listint_t));
+	listint_t *node = head;
+
+	if (!node)
+		return;
 
 	while (head)
 	{
-		node = head;
-		head = head->next;
+		head = node->next;
 		free(node);
+		node = head;
 	}
 }
