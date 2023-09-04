@@ -53,7 +53,7 @@ void read_error(char *f, char *buffer)
 */
 void write_error(char *f, char *buffer)
 {
-	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", f);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", f);
 	free(buffer);
 	exit(99);
 }
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 		if (r_bytes == -1 || f_from == -1)
 			read_error(file_from, buffer);
 
-		w_bytes = write(f_to, buffer, 1024);
+		w_bytes = write(f_to, buffer, r_bytes);
 		if (w_bytes == -1 || f_to == -1)
 			write_error(file_to, buffer);
 
@@ -95,8 +95,8 @@ int main(int argc, char *argv[])
 		f_to = open(file_to, O_WRONLY | O_APPEND);
 	} while (r_bytes > 0);
 
+	close_f(f_to);
+	close_f(f_from);
 	free(buffer);
-	close(f_to);
-	close(f_from);
 	return (0);
 }
