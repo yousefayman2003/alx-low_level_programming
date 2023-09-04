@@ -26,17 +26,21 @@ int append_text_to_file(const char *filename, char *text_content)
 {
 	int f, bytes, len = _strlen(text_content);
 
-	if (!filename)
+	if (filename == NULL)
 		return (-1);
-
+	if (text_content == NULL)
+	{
+		f = open(filename, O_WRONLY | O_APPEND);
+		if (f == -1)
+			return (-1);
+		return (1);
+	}
 	f = open(filename, O_WRONLY | O_APPEND);
+	bytes = write(f, text_content, len);
 
-	if (f == -1)
+	if (f == -1 || bytes == -1)
 		return (-1);
-
-	if (len)
-		bytes = write(f, text_content, len);
 
 	close(f);
-	return (len == bytes ? 1 : -1);
+	return (1);
 }
