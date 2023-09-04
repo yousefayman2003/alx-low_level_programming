@@ -30,10 +30,12 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (-1);
 
 	f = open(filename, O_WRONLY | O_APPEND);
-	bytes = write(f, text_content, len);
 
-	if (f == -1 || bytes == -1)
+	if (f == -1)
 		return (-1);
+
+	if (len)
+		bytes = write(f, text_content, len);
 
 	close(f);
 	return (len == bytes ? 1 : -1);
