@@ -13,17 +13,16 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int f;
 	ssize_t n_bytes;
+	char buffer[READ_BUFFER_SIZE * 8];
 
-	char buffer[READ_BUFFER_SIZE];
-
-	if (!filename || !letters)
+	if (!filename)
 		return (0);
 
 	f = open(filename, O_RDONLY);
 	if (f == -1)
 		return (0);
-	n_bytes = read(f, &buffer, letters);
-	n_bytes = write(STDOUT_FILENO, &buffer, n_bytes);
+	n_bytes = read(f, &buffer[0], letters);
+	n_bytes = write(STDOUT_FILENO, &buffer[0], n_bytes);
 
 	close(f);
 	return (n_bytes);
