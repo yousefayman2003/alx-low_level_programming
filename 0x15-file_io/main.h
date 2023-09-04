@@ -1,7 +1,6 @@
 #ifndef MAIN_HEADER
 #define MAIN_HEADER
 
-#define READ_BUFFER_SIZE 1024
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
