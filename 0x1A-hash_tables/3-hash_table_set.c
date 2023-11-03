@@ -19,7 +19,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			|| strlen(key) == 0 || !value)
 		return (0);
 
-	index = key_index(key, ht->size);
+	index = key_index((const unsigned char *)key, ht->size);
 	tmp = ht->array[index];
 
 	while (tmp)
@@ -58,7 +58,7 @@ hash_node_t *hash_node(const char *key, const char *value)
 	if (!node)
 		return (NULL);
 
-	node->key = key;
+	node->key = strdup(key);
 	if (!(node->key))
 	{
 		free(node);

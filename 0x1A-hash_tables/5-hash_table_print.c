@@ -4,7 +4,7 @@
  * hash_table_print - prints a hash table.
  * @ht: the hash table to print
 */
-void hash_table_print(hash_table_t *ht)
+void hash_table_print(const hash_table_t *ht)
 {
 	hash_node_t *tmp;
 	unsigned long int i = 0;
@@ -21,9 +21,9 @@ void hash_table_print(hash_table_t *ht)
 		{
 			if (flag)
 				printf(", ");
-			priintf("'%s': '%s'", tmp->key, tmp->value);
+			printf("'%s': '%s'", tmp->key, tmp->value);
 			flag = 1;
-			tmp = tmp->next
+			tmp = tmp->next;
 		}
 		i++;
 	}

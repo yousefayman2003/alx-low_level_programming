@@ -4,7 +4,7 @@
  * hash_table_delete - deletes a hash table.
  * @ht: the hash table to delete
 */
-void hash_table_delete(const hash_table_t *ht)
+void hash_table_delete(hash_table_t *ht)
 {
 	hash_node_t *next;
 	unsigned long i = 0;
@@ -14,12 +14,12 @@ void hash_table_delete(const hash_table_t *ht)
 		while (ht->array[i])
 		{
 			next = ht->array[i]->next;
-			free(ht->array->key);
-			free(ht->array->value);
-			free(ht->array);
+			free(ht->array[i]->key);
+			free(ht->array[i]->value);
+			free(ht->array[i]);
 			ht->array[i] = next;
 		}
-		i++
+		i++;
 	}
 	free(ht->array);
 	ht->array = NULL;
