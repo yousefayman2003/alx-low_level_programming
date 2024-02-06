@@ -1,7 +1,6 @@
 #include "search_algos.h"
 
-void print_array(int *array, size_t l, size_t r);
-int recursive(int *array, size_t l, size_t h, int value);
+int b_recursive(int *array, size_t l, size_t h, int value);
 
 /**
  * advanced_binary - searches for a first occurance of a
@@ -18,33 +17,11 @@ int advanced_binary(int *array, size_t size, int value)
 	if (!array || size <= 0)
 		return (-1);
 
-	return (recursive(array, 0, size - 1, value));
+	return (b_recursive(array, 0, size - 1, value));
 }
 
 /**
- * print_array - prints given array
- * @array: pointer to first element in an array
- * @l: first index to print form
- * @r: last index to print to
-*/
-void print_array(int *array, size_t l, size_t r)
-{
-	size_t i;
-
-	if (!array)
-		return;
-
-	printf("Searching in array: ");
-	for (i = l; i < r; i++)
-	{
-		printf("%d, ", array[i]);
-	}
-	/* print last element */
-	printf("%d\n", array[r]);
-}
-
-/**
- * recursive - recursivly solve binary search
+ * b_recursive - recursivly solve binary search
  * @array: pointer to first element in the array
  * @l: low index
  * @r: high index
@@ -52,25 +29,22 @@ void print_array(int *array, size_t l, size_t r)
  *
  * Return: index of found value in or -1 if not found
 */
-int recursive(int *array, size_t l, size_t r, int value)
+int b_recursive(int *array, size_t l, size_t r, int value)
 {
 	size_t m;
 
-	while (l <= r)
-	{
-		m = (l + r) / 2;
+	if (r < l)
+		return (-1);
 
-		print_array(array, l, r);
+	printf("Searching in array: ");
+	for (m = l; m < r; m++)
+		printf("%d, ", array[m]);
+	printf("%d\n", array[m]);
 
-		if (array[l] == value)
-			return (l);
-
-		if (array[m] == value && (m == l || array[m - 1] != value))
-			return (m);
-		if (array[m] < value)
-			return (recursive(array, m + 1, r, value));
-		if (array[m] >= value)
-			return (recursive(array, l, m, value));
-	}
-	return (-1);
+	m = l + (r - l) / 2;
+	if (array[m] == value && (m == l || array[m - 1] != value))
+		return (m);
+	if (array[m] >= value)
+		return (b_recursive(array, l, m, value));
+	return (b_recursive(array, m + 1, r, value));
 }
