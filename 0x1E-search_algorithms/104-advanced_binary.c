@@ -15,10 +15,10 @@ int recursive(int *array, size_t l, size_t h, int value);
 */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (array)
-		return (recursive(array, 0, size - 1, value));
+	if (!array || size <= 0)
+		return (-1);
 
-	return (-1);
+	return (recursive(array, 0, size - 1, value));
 }
 
 /**
@@ -65,7 +65,7 @@ int recursive(int *array, size_t l, size_t r, int value)
 		if (array[l] == value)
 			return (l);
 
-		if (array[m] == value && array[m - 1] != value)
+		if (array[m] == value && (m == l || array[m - 1] != value))
 			return (m);
 		if (array[m] < value)
 			return (recursive(array, m + 1, r, value));
